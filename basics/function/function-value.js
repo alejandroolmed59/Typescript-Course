@@ -1,8 +1,9 @@
-"use strict";
 function addHandle(num1, num2, cb) {
-    let res = num1 + num2;
-    cb(res);
+    var res = num1 + num2;
+    var avr = cb(res);
+    console.log(avr);
 }
-addHandle(5, 15, (final) => {
+addHandle(5, 15, function (final) {
     console.log(final);
+    return true;
 });

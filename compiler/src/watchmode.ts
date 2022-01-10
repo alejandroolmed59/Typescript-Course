@@ -1,7 +1,7 @@
 type User = {name:string, age:number, rol: Roles, loissirs: (string|number)[]}
-enum Roles {ASS, BOSS, NIGGA}
+enum Roles {ASS=69, BOSS, NIGGA}
 
-const usuario: User= {name:"mAX", age:35, rol:Roles.NIGGA, loissirs:["playa", "arena", "DECK",4]}
+const usuario: User= {name:"osia musical", age:35, rol: Roles.ASS, loissirs:["playa", "arena", 69, "DECK",4]}
 
 
 function descompose(user: User){
@@ -9,5 +9,9 @@ function descompose(user: User){
     console.log(name);
     console.log(rol);
 }
+descompose(usuario);
 
-console.log(usuario);
+const res = usuario.loissirs.map((val, index)=>{
+    return val+" "+index
+})
+console.log(res);
