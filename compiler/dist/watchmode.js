@@ -5,7 +5,7 @@ var Roles;
     Roles[Roles["BOSS"] = 70] = "BOSS";
     Roles[Roles["NIGGA"] = 71] = "NIGGA";
 })(Roles || (Roles = {}));
-var usuario = { name: "osia musical", age: 35, rol: Roles.ASS, loissirs: ["playa", "arena", 69, "DECK", 4] };
+var usuario = { name: "Maxs", age: 35, rol: Roles.ASS, loissirs: ["playa", "arena", 69, "DECK", 4] };
 function descompose(user) {
     var name = user.name, rol = user.rol;
     console.log(name);
