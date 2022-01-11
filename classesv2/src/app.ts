@@ -26,4 +26,3 @@ class Person implements Greetable {
 
 let p1 = new Person(21, "alej");
 p1.greet("osi osi")
-
