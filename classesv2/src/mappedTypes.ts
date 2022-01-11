@@ -1,12 +1,16 @@
 type Fruit = 'apple' | 'orange' | 'banana';
-
-type FruitCount = {
-  [key in Fruit]: number;
+interface Rating {
+  estrellas: number;
+  sabor: string
 }
 
-const fruits: FruitCount = {
-    apple: 2,
-    orange: 4,
-    banana: 6
+type FruitCount<T> = {
+  [key in Fruit]: T;
+}
+
+const fruits: FruitCount<Rating> = {
+    orange: {estrellas:2, sabor:"acido"},
+    apple: {estrellas:5, sabor:"dulce"},
+    banana: {estrellas:1, sabor:"amargo"}
 };
 console.log(fruits);
