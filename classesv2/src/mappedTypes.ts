@@ -37,3 +37,26 @@ function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
 let x = { a: 1, b: 2, c: 3, d: 4 };
 
 getProperty(x, 'd');
+
+//Key remapping
+
+type Getters<Type> = {
+  [Property in keyof Type as `get${Capitalize<string & Property>}`]: () => Type[Property]
+};
+
+interface PersonMapped {
+  firstName: string;
+  age: number;
+  location: string;
+}
+
+type LazyPerson = Getters<PersonMapped>;
+//
+type EventConfig<Events extends { kind: string }> = {
+  [E in Events as E["kind"]]: (event: E) => void;
+}
+
+type SquareEvent = { kind: "square", x: number, y: number };
+type CircleEvent = { kind: "circle", radius: number };
+
+type Config = EventConfig<SquareEvent | CircleEvent>
