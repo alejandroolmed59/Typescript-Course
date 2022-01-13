@@ -105,30 +105,6 @@ const perMuti: Omit<Person, "dayofB" | "age"> = { firstName: "ale" }
 console.log(perMuti);
 
 
-// Record utility type and mapped types
-interface CatInfo {
-  age: number;
-  breed: string;
-}
-type CatName = "miffy" | "boris" | "mordred" | "Frodo";
-
-const cats: Record<CatName, CatInfo> = {
-  miffy: { age: 10, breed: "Persian" },
-  boris: { age: 5, breed: "Maine Coon" },
-  mordred: { age: 16, breed: "British Shorthair" },
-  Frodo: { age: 6, breed: "furry " }
-};
-
-
-
-//'keyof' keyword used in generic function
-function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
-  return obj[key];
-}
-
-let x = { a: 1, b: 2, c: 3, d: 4 };
-
-getProperty(x, 'd');
 
 //Indexed access types
 

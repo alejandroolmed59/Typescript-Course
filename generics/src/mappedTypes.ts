@@ -15,7 +15,7 @@ const fruits: FruitCount<Fruit, Rating> = {
 };
 console.log(fruits);
 
-// EJ2.
+// Record utility type and mapped types
 interface CatInfo {
   age: number;
   breed: string;
@@ -51,12 +51,30 @@ interface PersonMapped {
 }
 
 type LazyPerson = Getters<PersonMapped>;
-//
+
+// Map over arbitrary unions, not just unions of string | number | symbol, but unions of any type:
 type EventConfig<Events extends { kind: string }> = {
-  [E in Events as E["kind"]]: (event: E) => void;
+    [E in Events as E["kind"]]: (event: E) => void;
 }
 
 type SquareEvent = { kind: "square", x: number, y: number };
 type CircleEvent = { kind: "circle", radius: number };
 
 type Config = EventConfig<SquareEvent | CircleEvent>
+
+// Mapped types work well with other features in this type manipulation section, 
+type ExtractPII<Type> = {
+  [Property in keyof Type]: Type[Property] extends { pii: true } ? boolean : string;
+};
+ 
+type DBFields = {
+  id: { format: "incrementing" };
+  name: { type: string; pii: true };
+};
+
+type ObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
+
+const algo : ObjectsNeedingGDPRDeletion = {
+  id: "",
+  name: false
+}
